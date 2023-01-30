@@ -1,0 +1,153 @@
+@import "react-slideshow-image/dist/styles.css";
+
+.each-slide>div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 90vh;
+    margin-right: -30px;
+}
+@media(width: 912px) {
+    .each-slide>div {
+        height: 50vh;
+    }
+}
+@media(max-width: 820px){
+    .each-slide>div {
+        height: 44vh;
+    }
+}
+@media(max-width: 768px) {
+    .each-slide>div{
+        height: 60vh;
+    }
+}
+@media(max-width: 450px){
+    .each-slide>div {
+        width: 100%;
+    }
+}
+
+.each-slide span {
+    padding: 20px;
+    font-size: 20px;
+    background: #efefef;
+    text-align: center;
+}
+
+
+.arrow-right {
+    background: url(../../../../public/assets/rightArrow.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    top: 22rem;
+    width: 30px;
+    cursor: pointer;
+}
+
+.arrow-left {
+    background: url(../../../../public/assets/leftArrow.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    top: 22rem;
+    width: 30px;
+    cursor: pointer;
+}
+@media(min-width: 1450px) {
+    .arrow-right,
+    .arrow-left {
+        top: 32rem !important;
+    }
+}
+
+.arrow:hover {
+    opacity: 50%;
+}
+
+.indicators {
+    margin-left: -1.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.indicator {
+    width: 6rem;
+    height: 7rem;
+    margin-right: 1rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    border: 1px rgb(228, 228, 228) solid;
+}
+@media(max-width: 1024px) {
+    .indicator {
+        width: 4.5rem;
+        height: 5.4rem;
+    }
+}
+@media(min-width: 1450px) {
+    .indicator {
+        width: 7rem;
+        height: 8rem;
+    }
+}
+@media(min-width: 1368px) {
+    .arrow-left,
+    .arrow-right {
+        top: 28rem;
+    }
+}
+@media(max-width: 1280px) {
+    .arrow-left,
+    .arrow-right {
+        display: none;
+    }
+}
+
+.indicator.active {
+    opacity: 50%;
+}
+
+@media (max-width: 990px) {
+
+    .arrow-right {
+        background-size: 30%;
+        top: 18.3rem;
+        right: -1rem;
+    }
+
+    .arrow-left {
+        background-size: 30%;
+        top: 18.4rem;
+        left: -0.6rem;
+    }
+
+    /* .indicator {
+        width: 3rem;
+        height: 3rem;
+    } */
+}
+
+@media (max-width: 500px) {
+    .arrow-right {
+        display: none;
+    }
+
+    .arrow-left {
+       display: none;
+    }
+
+    .indicator {
+        width: 2.5rem;
+        height: 2.5rem;
+        margin-right: 0.4rem;
+        margin-left: 0.4rem;
+    }
+}

@@ -1,0 +1,48 @@
+.heading {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.015em;
+    margin-top: 3rem;
+    color: #010101;
+    font-size: 26px;
+}
+
+.heading-txt {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 44px;
+    margin-right: 3px;
+    cursor: pointer;
+}
+
+.arrow {
+    transition: 500ms ease;
+}
+
+article {
+    position: relative;
+    width: 35px;
+    height: 35px;
+    margin: 5px;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+
+article input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+input[type=checkbox]:checked ~ div {
+    border: 2px solid #000;
+    margin: 2px;
+}

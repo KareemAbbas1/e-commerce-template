@@ -1,0 +1,52 @@
+.contact-us {
+    max-width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: url(../../../../public/assets/banner.jpg);
+    opacity: 90%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+    padding-top: 4rem;
+}
+
+.contact-form-container {
+    width: 65%;
+    height: 90%;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    background: rgba(217, 217, 217, 0.16);
+    border-radius: 10px;
+    color: rgb(245, 245, 245);
+}
+
+.contact-form-container h3 {
+    text-align: center;
+}
+
+.send-message {
+    width: 30%;
+}
+
+@media (max-width: 990px) {
+    .message-input {
+        height: 5rem;
+    }
+}
+
+@media (max-width: 730px) {
+    .send-message {
+        width: 50%;
+    }
+}
+
+@media (max-width: 500px) {
+    .contact-form-container {
+        width: 80%;
+    }
+
+    .send-message {
+        width: 90%;
+    }
+}
