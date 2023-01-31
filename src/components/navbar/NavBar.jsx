@@ -138,28 +138,56 @@ const NavBar = () => {
 
                         <Offcanvas.Body>
                             <Nav className='justify-content-between flex-grow-1 nav-links'>
-                                <Link to="/" className={`home-link ${navLinkStyle()}`}>
+                                <Link
+                                    to="/"
+                                    className={`home-link ${navLinkStyle()}`}
+                                    onClick={handleCloseOffcanvas}
+                                >
                                     Home
                                 </Link>
 
-                                <Link to="/products" className={navLinkStyle()}>
-                                    Computers
+                                <Link
+                                    to="/products"
+                                    className={navLinkStyle()}
+                                    onClick={handleCloseOffcanvas}
+                                >
+                                    Women
                                 </Link>
 
-                                <Link to="/products">
-                                    <span className={navLinkStyle()}>Mobile Phones</span>
+                                <Link
+                                    to="/products"
+                                    onClick={handleCloseOffcanvas}
+                                >
+                                    <span className={navLinkStyle()}>
+                                        Men
+                                    </span>
                                 </Link>
 
-                                <Link to="/products">
-                                    <span className={navLinkStyle()}>Tablets</span>
+                                <Link
+                                    to="/products"
+                                    onClick={handleCloseOffcanvas}
+                                >
+                                    <span className={navLinkStyle()}>
+                                        Kids
+                                    </span>
                                 </Link>
 
-                                <Link to="/about-us">
-                                    <span className={location.pathname === '/about-us' ? `active-link ${navLinkStyle()}` : navLinkStyle()}>About Us</span>
+                                <Link
+                                    to="/about-us"
+                                    onClick={handleCloseOffcanvas}
+                                >
+                                    <span className={location.pathname === '/about-us' ? `active-link ${navLinkStyle()}` : navLinkStyle()}>
+                                        About Us
+                                    </span>
                                 </Link>
 
-                                <Link to="/contact-us">
-                                    <span className={location.pathname === '/contact-us' ? `active-link ${navLinkStyle()}` : navLinkStyle()}>Contact Us</span>
+                                <Link
+                                    to="/contact-us"
+                                    onClick={handleCloseOffcanvas}
+                                >
+                                    <span className={location.pathname === '/contact-us' ? `active-link ${navLinkStyle()}` : navLinkStyle()}>
+                                        Contact Us
+                                    </span>
                                 </Link>
                             </Nav>
                         </Offcanvas.Body>
@@ -214,7 +242,15 @@ const NavBar = () => {
                     <Offcanvas.Title>Log In</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-                    Log in here
+                    <form>
+                        <input placeholder='Enter your email'/>
+                        <input placeholder='Enter your password'/>
+                        <div>
+                            <a href=''>don't have an account? Sign up</a>
+                            <a href=''>forgot password</a>
+                        </div>
+                        <button onClick={(e) => {e.preventDefault()}}>Log in</button>
+                    </form>
                 </Offcanvas.Body>
             </Offcanvas>
 

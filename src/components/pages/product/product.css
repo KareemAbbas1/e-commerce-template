@@ -8,9 +8,14 @@
 .buttons-container {
     width: 100%;
 }
-@media(min-width: 1450px) {
+@media(min-width: 1700px) {
     .products-container {
         padding-inline:  15rem !important;
+    }
+}
+@media(width: 1680px) {
+    .products-container {
+        padding-inline:  10rem !important;
     }
 }
 
@@ -19,6 +24,15 @@
     color: #fff;
     border-radius: 0%;
     font-weight: 500;
+}
+.add-to-cart-link {
+    display: inline-block;
+    width: 100%;
+    color: inherit;
+    text-decoration: none;
+}
+.add-to-cart-link:hover {
+    color: inherit
 }
 
 .color {

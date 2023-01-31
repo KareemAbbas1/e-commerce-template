@@ -46,3 +46,24 @@ input[type=checkbox]:checked ~ div {
     border: 2px solid #000;
     margin: 2px;
 }
+
+.page-item a {
+    color: #000;
+}
+.page-item a:hover {
+    color: #000;
+}
+
+.page-item button {
+    color: #000;
+}
+.page-item button:hover {
+    color: #000;
+}
+.page-item.active button {
+    background-color: #000;
+    border-color: #000;
+}
+.page-item.active button:hover {
+    color: #fff;
+}

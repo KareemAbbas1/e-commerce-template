@@ -104,7 +104,7 @@ const Footer = () => {
                             </tr>
                         </tbody>
                     </table>
-                    <p style={{marginTop: '1rem'}}>All Design & Development Copyright, Rights Reserved to <a href='https://www.linkedin.com/in/kareem-abbas-715868210/' target="_blank" rel='noreferrer'>Kareem Abbas</a></p>
+                    <p style={{marginTop: '1rem'}}>All Design & Development Copyright, Rights Reserved to <a href='https://new-portfolio-kareemabbas1.vercel.app/' target="_blank" rel='noreferrer'>Kareem Abbas</a></p>
                 </div>
             </div>
         </section>

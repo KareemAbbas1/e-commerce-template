@@ -10,6 +10,8 @@ import Rating from '../../Rating';
 import ProductReviews from './ProductReviews';
 import ResponsiveAccordions from './ResponsiveAccordions';
 import ProductsSlider from '../../ProductsSlider';
+import { Link } from "react-router-dom";
+
 
 
 const Produt = (props) => {
@@ -80,7 +82,7 @@ const Produt = (props) => {
     <Container fluid className='products-container'>
       <Row className='details-container px-xl-5'>
         <Col lg={7} md={8}>
-          <ImagesSlider images={images}/>
+          <ImagesSlider images={images} />
         </Col>
         <Col lg={5} md={4} sm={12} className='product-details px-xl-4'>
           <h2>{name}</h2>
@@ -113,7 +115,19 @@ const Produt = (props) => {
                 </Button>
               </span>
 
-              <Button className='add-to-cart' variant='dark'>Add To Cart</Button><br />
+              <Button className='add-to-cart' variant='dark'>
+                <Link
+                  to="/cart"
+                  style={{
+                    color: "#fff",
+                    textDecoration: "none",
+                    display: "inline-block",
+                    width: "100%"
+                  }}
+                >
+                  Add To Cart
+                </Link>
+              </Button><br />
             </div>
             <Button
               className='w-100 mt-2'
@@ -123,7 +137,9 @@ const Produt = (props) => {
                 fontWeight: '500'
               }}
             >
-              Buy Now
+              <Link to="/cart" className='add-to-cart-link'>
+                Buy Now
+              </Link>
             </Button>
           </div>
         </Col>

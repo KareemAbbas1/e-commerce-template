@@ -65,6 +65,43 @@
     }
 }
 
+@media(height: 1057px) {
+    .arrow-left,
+    .arrow-right {
+        top: 35rem !important;
+    }
+}
+@media(height: 1200px) {
+    .arrow-left,
+    .arrow-right {
+        top: 38.5rem !important;
+    }
+}
+@media(height: 1050px) {
+    .arrow-left,
+    .arrow-right {
+        top: 35rem !important;
+    }
+}
+@media(height: 757px) {
+    .arrow-left,
+    .arrow-right {
+        top: 26rem !important;
+    }
+}
+@media(height: 900px) {
+    .arrow-left,
+    .arrow-right {
+        top: 30rem !important;
+    }
+}
+@media(height: 768px) {
+    .arrow-left,
+    .arrow-right {
+        top: 26.5rem !important;
+    }
+}
+
 .arrow:hover {
     opacity: 50%;
 }

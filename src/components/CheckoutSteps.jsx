@@ -55,6 +55,10 @@ const Row = styled.div`
             display: block;
         }
     }
+
+    @media(max-width: 450px) {
+        font-size: 13px;
+    }
 `
 
 

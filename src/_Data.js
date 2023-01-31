@@ -3,10 +3,10 @@ export const products = {
         id: "zpma5agmwdiyv8k8uuk9a",
         images: [
             "https://images.pexels.com/photos/5119409/pexels-photo-5119409.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "https://www.notebookcheck.net/uploads/tx_nbc2/4zu3_xps15.jpg",
-            "https://i.dell.com/is/image/DellContent/content/dam/ss2/product-images/dell-client-products/notebooks/xps-notebooks/xps-15-9520/spi/black/ng/notebook-xps-15-9520-black-campaign-hero-504x350-ng.psd?fmt=jpg&wid=570&hei=400",
-            "https://www.fortress.com.hk/medias/XPS-15-9510-Laptop-12609462.jpg?context=bWFzdGVyfGZlYXQycHJkfDY1ODMwfGltYWdlL2pwZWd8ZmVhdDJwcmQvaGJmL2g0MS85OTI2OTgyNjk2OTkwLmpwZ3xkNjk3ZTE2NTI0ZTM0ODIyYTg2NTZiOTg2ZjVjN2UzNmQwMzFiNWNlZWRkNjYyZjBkNDdjNDhkNDVhYzYwY2Ew",
-            "https://www.notebookcheck.net/fileadmin/_processed_/6/9/csm_XPS_15_right_angle_white_90b9062987.jpg"
+            "https://images.pexels.com/photos/949670/pexels-photo-949670.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/11688446/pexels-photo-11688446.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/2853909/pexels-photo-2853909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg"
         ],
         type: "Laptop",
         name: "Dell XPS",
@@ -81,7 +81,7 @@ export const products = {
     "ix7ogif44nod8vzbgetbf5": {
         id: "ix7ogif44nod8vzbgetbf5",
         images: [
-            "https://i.dell.com/is/image/DellContent//content/dam/ss2/product-images/dell-client-products/notebooks/xps-notebooks/xps-15-9500/pdp/notebook_laptop_xps_15_9500_npl_pdp_gallery504x350.jpg?fmt=jpg"
+            "https://images.pexels.com/photos/949670/pexels-photo-949670.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         ],
         type: "Laptop",
         name: "Dell XPS 9500",
@@ -114,7 +114,7 @@ export const products = {
     "2sdhvo7ad1j76ut2qb2rt": {
         id: "2sdhvo7ad1j76ut2qb2rt",
         images: [
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6TZyrQNJDyKIvhSy8DClul7C9bltWijQGxw&usqp=CAU"
+            "https://images.pexels.com/photos/11688446/pexels-photo-11688446.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         ],
         type: "Laptop",
         name: "Dell G15",
@@ -147,7 +147,7 @@ export const products = {
     "gwxoyuvb2m4k6wea88ndk": {
         id: "gwxoyuvb2m4k6wea88ndk",
         images: [
-            "https://d1eh9yux7w8iql.cloudfront.net/product_images/1586957925.1035786.jpg"
+            "https://images.pexels.com/photos/2853909/pexels-photo-2853909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         ],
         type: "Laptop",
         name: "MacBook Pro",
@@ -180,7 +180,7 @@ export const products = {
     "1f362pb4sfer7l9qzki76c": {
         id: "1f362pb4sfer7l9qzki76c",
         images: [
-            "https://images.fixjeiphone.nl/wp-content/uploads/2019/09/MacBook-Pro-M1-A2485-16-inch-2021-onderdelen.png"
+            "https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg"
         ],
         type: "Laptop",
         name: "MacBook Air",
@@ -213,7 +213,7 @@ export const products = {
     "a7d032mtjvdda0qay989pn": {
         id: "a7d032mtjvdda0qay989pn",
         images: [
-            "https://cdn-image02.casetify.com/usr/11785/3671785/~v10/11191811_macbook-pro-14_16004158__render7.png.350x350-w.m80.jpg"
+            "https://images.pexels.com/photos/1055691/pexels-photo-1055691.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         ],
         type: "Laptop",
         name: "MacBook Air",
@@ -246,7 +246,7 @@ export const products = {
     "yn16eco1a2lc3o20z9kv8d": {
         id: "yn16eco1a2lc3o20z9kv8d",
         images: [
-            "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c06606431.png"
+            "https://images.pexels.com/photos/157675/fashion-men-s-individuality-black-and-white-157675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         ],
         type: "Laptop",
         name: "HP gw8000",
@@ -279,7 +279,7 @@ export const products = {
     "iwg6nudqh66phhzj3lz59": {
         id: "iwg6nudqh66phhzj3lz59",
         images: [
-            "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c06606328.png"
+            "https://images.pexels.com/photos/965324/pexels-photo-965324.jpeg?auto=compress&cs=tinysrgb&w=1600"
         ],
         type: "Laptop",
         name: "HP dw5000",
@@ -312,7 +312,7 @@ export const products = {
     "ohehkrutsdntax6cz1": {
         id: "ohehkrutsdntax6cz1",
         images: [
-            "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c06251847.png"
+            "https://images.pexels.com/photos/884979/pexels-photo-884979.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         ],
         type: "Laptop",
         name: "HP dw3596",
@@ -345,7 +345,7 @@ export const products = {
     "rulsori2blthal9tufvse": {
         id: "rulsori2blthal9tufvse",
         images: [
-            "https://usmanelectronics.com/wp-content/uploads/2022/02/Hp-15t-Dw300.png"
+            "https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         ],
         type: "Laptop",
         name: "HP dw300",
@@ -378,7 +378,7 @@ export const products = {
     "3snrnk5r0sf5yu6ttaifkp": {
         id: "3snrnk5r0sf5yu6ttaifkp",
         images: [
-            "https://www.refurbished.nl/cache/images/iphone-12-promax-zilver-multi_600x600_BGresize_16777215-tj.png"
+            "https://images.pexels.com/photos/1852382/pexels-photo-1852382.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         ],
         type: "mobile",
         name: "iPhone 12 Pro",
@@ -411,7 +411,7 @@ export const products = {
     "ryfzc8tyxdc95ei8efof4t": {
         id: "ryfzc8tyxdc95ei8efof4t",
         images: [
-            "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-13-pro-sierra-blue-back.png"
+            "https://images.pexels.com/photos/852860/pexels-photo-852860.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         ],
         type: "mobile",
         name: "iPhone 13 Pro",
@@ -444,7 +444,7 @@ export const products = {
     "o1kuodedpzb8d8xwmd0hfa": {
         id: "o1kuodedpzb8d8xwmd0hfa",
         images: [
-            "https://www.refurbished.nl/cache/images/iphone-12-promax-zilver-multi_600x600_BGresize_16777215-tj.png"
+            "https://images.pexels.com/photos/2065195/pexels-photo-2065195.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         ],
         type: "mobile",
         name: "iPhone 12 Pro Max",
@@ -477,7 +477,7 @@ export const products = {
     "su1zfd8bkdngrcxncpnffo": {
         id: "su1zfd8bkdngrcxncpnffo",
         images: [
-            "https://www.apple.com/newsroom/images/product/iphone/standard/apple_iphone-12_ios-14-springboard_10132020_carousel.jpg.large.jpg"
+            "https://images.pexels.com/photos/794063/pexels-photo-794063.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         ],
         type: "mobile",
         name: "iPhone 12",
@@ -510,7 +510,7 @@ export const products = {
     "lpfovekh9hl3n0eoziq8qh": {
         id: "lpfovekh9hl3n0eoziq8qh",
         images: [
-            "https://images.samsung.com/is/image/samsung/eg/galaxy-note20/gallery/eg-galaxy-z-fold2-f916-sm-f916bznqegy-frontmysticbronze-thumb-274061201?264_264_PNG"
+            "https://images.pexels.com/photos/1972115/pexels-photo-1972115.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         ],
         type: "mobile",
         name: "Galaxy Z Fold",
@@ -543,7 +543,7 @@ export const products = {
     "vwnpawa4rm4tmvs056q": {
         id: "vwnpawa4rm4tmvs056q",
         images: [
-            "https://g8x5q8g4.rocketcdn.me/wp-content/uploads/2022/05/Samsung-A53-.jpg"
+            "https://images.pexels.com/photos/1375849/pexels-photo-1375849.jpeg?auto=compress&cs=tinysrgb&w=1600"
         ],
         type: "mobile",
         name: "Note 3",
@@ -576,7 +576,7 @@ export const products = {
     "4isgbwnowldyut0dkzf8g": {
         id: "4isgbwnowldyut0dkzf8g",
         images: [
-            "https://images.samsung.com/is/image/samsung/eg-galaxy-s20-plus-sm-g985-sm-g985fzkdegy-frontcosmicblack-213734550?PD_SHOP_MAIN"
+            "https://images.pexels.com/photos/1381556/pexels-photo-1381556.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         ],
         type: "mobile",
         name: "Galaxy s20 Plus",
@@ -609,7 +609,7 @@ export const products = {
     "4edn9i3rwu682ui3qgjh4h": {
         id: "4edn9i3rwu682ui3qgjh4h",
         images: [
-            "https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/admin-image/phones/nova9-se/list/list-blue.png"
+            "https://images.pexels.com/photos/1163194/pexels-photo-1163194.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         ],
         type: "mobile",
         name: "Huawei Nova9",
@@ -642,7 +642,7 @@ export const products = {
     "y39upfvrg6nwp6vk7i4q6m": {
         id: "y39upfvrg6nwp6vk7i4q6m",
         images: [
-            "https://consumer-img.huawei.com/content/dam/huawei-cbg-site/common/mkt/plp/phones/new-phones/series-products/y62019-black.png"
+            "https://images.pexels.com/photos/2065200/pexels-photo-2065200.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         ],
         type: "mobile",
         name: "Huawei x3",
@@ -675,7 +675,7 @@ export const products = {
     "acwsk57b9dm6o0kck7cvvt": {
         id: "acwsk57b9dm6o0kck7cvvt",
         images: [
-            "https://consumer-img.huawei.com/content/dam/huawei-cbg-site/common/mkt/plp/phones/new-phones/series-products/p40-silver.png"
+            "https://images.pexels.com/photos/1689731/pexels-photo-1689731.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         ],
         type: "mobile",
         name: "Huawei",
@@ -708,7 +708,7 @@ export const products = {
     "fsfvl5h9kgex6e0j3mwadk": {
         id: "fsfvl5h9kgex6e0j3mwadk",
         images: [
-            "https://m.media-amazon.com/images/I/51llBgFaaFL._AC_SY780_.jpg"
+            "https://images.pexels.com/photos/914668/pexels-photo-914668.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         ],
         type: "tablet",
         name: "iPad Pro",
@@ -741,7 +741,7 @@ export const products = {
     "3ajdkwn6j74f30z9ytu3od": {
         id: "3ajdkwn6j74f30z9ytu3od",
         images: [
-            "https://www.mytrendyphone.eu/images/Samsung-Galaxy-Tab-S7-Plus-5G-SM-T976B-256GB-Mystic-Silver-8806090628566-24082020-1-p.jpg"
+            "https://images.pexels.com/photos/449977/pexels-photo-449977.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         ],
         type: "tablet",
         name: "Galaxy Tab s7",
@@ -774,7 +774,7 @@ export const products = {
     "poztulrgzlhz3h0okfpg5g": {
         id: "poztulrgzlhz3h0okfpg5g",
         images: [
-            "https://www.tradeinn.com/f/13806/138068709/huawei-mediapad-t10-2gb-32gb-9.7-tablet.jpg"
+            "https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=1600"
         ],
         type: "tablet",
         name: "Huawei MediaPad T10",
@@ -807,7 +807,7 @@ export const products = {
     "52xhh78sjbp43f38jk5f3h": {
         id: "52xhh78sjbp43f38jk5f3h",
         images: [
-            "https://cdn.vox-cdn.com/thumbor/DFhh0rfFgSd74HWdSRAfMdjEb7U=/1400x1400/filters:format(png)/cdn.vox-cdn.com/uploads/chorus_asset/file/19336484/Screen_Shot_2019_10_31_at_2.03.04_PM.png"
+            "https://images.pexels.com/photos/1557843/pexels-photo-1557843.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         ],
         type: "tablet",
         name: "Huawei MediaPad T5",
@@ -840,7 +840,7 @@ export const products = {
     "hl0qr9rz5f5auvdzf0vu6p": {
         id: "hl0qr9rz5f5auvdzf0vu6p",
         images: [
-            "https://www.startechstore.com/wp-content/uploads/2020/06/image-15_dk5t.png"
+            "https://images.pexels.com/photos/1075776/pexels-photo-1075776.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         ],
         type: "tablet",
         name: "Huawei MatePad Pro",

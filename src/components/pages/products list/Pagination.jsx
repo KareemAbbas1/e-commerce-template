@@ -29,7 +29,7 @@ const Paginationn = ({ productsPerPage, totalProducts, paginate }) => {
             <ul className="pagination gap-2">
                 {
                     currentPageNumber > 1 &&
-                    <Pagination.Prev onClick={() => handlePrevPage()} />
+                    <Pagination.Prev className="page-item" onClick={() => handlePrevPage()} />
                 }
                 {pageNumbers.length > 2 && currentPageNumber === pageNumbers.length ? <Pagination.Ellipsis disabled /> : null}
 

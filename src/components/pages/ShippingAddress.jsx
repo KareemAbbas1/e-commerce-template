@@ -27,6 +27,13 @@ const Form = styled.form`
     input {
         margin-top: 2px;
     }
+
+    @media(max-width: 992px) {
+        width: 70vw;
+    }
+    @media(max-width: 450px) {
+        width: 100%;
+    }
 `
 
 const Input = styled.input`
@@ -81,13 +88,13 @@ const ShippingAddress = () => {
                 <Form>
                     <Title>Shipping Address</Title>
 
-                    <label for='full-name'><h6>Full Name</h6></label><br />
+                    <label htmlFor='full-name'><h6>Full Name</h6></label><br />
                     <Input type='text' id='full-name' name='full-name' placeholder="Enter your full name" /><br /><br />
 
-                    <label for='phone-number'><h6>Phone Number</h6></label><br />
+                    <label htmlFor='phone-number'><h6>Phone Number</h6></label><br />
                     <Input type='tel' id='phone-number' name='phone-number' placeholder="Enter your phone number" /><br /><br />
 
-                    <label for='country'><h6>Country</h6></label><br />
+                    <label htmlFor='country'><h6>Country</h6></label><br />
                     <Input list="countries" id='country' name='country' placeholder="Choose a country" /><br />
                     <datalist id="countries">
                         <option value="Afghanistan">Afghanistan</option>
@@ -341,7 +348,7 @@ const ShippingAddress = () => {
                         <SmallInput id='postal-code' name='postal-code' placeholder='Postal Code(Optional)' />
                     </SmallContainer>
 
-                    <br /><label for='address'><h6>Address</h6></label><br />
+                    <br /><label htmlFor='address'><h6>Address</h6></label><br />
                     <Input id='address' name='address' placeholder='Enter your address' /><br />
 
                     <SmallContainer>

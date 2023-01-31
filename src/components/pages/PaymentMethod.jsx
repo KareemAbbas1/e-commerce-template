@@ -20,6 +20,10 @@ const Title = styled.h2`
 
 const Form = styled.form`
     width: 50vw;
+
+    @media(max-width: 450px) {
+        width: 95%;
+    }
 `
 
 const Input = styled.input`
