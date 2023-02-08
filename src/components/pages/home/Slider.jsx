@@ -8,19 +8,19 @@ const slidesData = [
         id: 2,
         title: "Summer Sale",
         description: "Don't Compromise on style! Get flat 30% off for new arrivals",
-        bg: "https://i.postimg.cc/BQrv9m8m/hero2.jpg",
+        bg: "https://images.pexels.com/photos/1549200/pexels-photo-1549200.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     },
     {
         id: 1,
         title: "Winter Sale",
         description: "Don't Compromise on style! Get flat 30% off for new arrivals",
-        bg: "https://i.postimg.cc/xTCsDRrN/hero3.jpg",
+        bg: "https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     },
     {
         id: 3,
         title: "Regular Sale",
         description: "Don't Compromise on style! Get flat 30% off for new arrivals",
-        bg: "https://i.postimg.cc/3JCRggfN/hero1.jpg",
+        bg: "https://images.pexels.com/photos/10679171/pexels-photo-10679171.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     },
 ]
 
