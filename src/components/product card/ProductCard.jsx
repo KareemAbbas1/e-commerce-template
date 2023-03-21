@@ -3,6 +3,7 @@ import "./productCard.css";
 import { Link } from "react-router-dom";
 import Rating from "../Rating";
 import styled from "styled-components";
+import { v4 as uuidv4 } from 'uuid';
 
 
 const Button = styled.button`
@@ -18,19 +19,20 @@ const Button = styled.button`
 `
 const ProductCard = ({ product }) => {
     // console.log(product);
-    const id = product && product.id;
+    const id = product && product._id;
     const rate = product && product.rate;
     const image = product && product.images[0];
-    const productName = product && product.name;
+    const productName = product && product.title;
     const productDescription = product && product.description;
     const price = product && product.price;
     const oldPrice = product && product.oldPrice;
+    const colors = product && product.colors
 
     return (
         <div className="d-flex gap-3 mb-5">
             <Card className="card-container category-card-container">
                 <div className="product-card">
-                    <Link to={`/products/${id}`}>
+                    <Link to={`/product/${id}`}>
                         <Card.Img className="product-image" variant="top" src={image} />
                         <div className="middle">
                             <div className="text">More Details</div>
@@ -52,9 +54,15 @@ const ProductCard = ({ product }) => {
 
                     <div style={{ marginTop: '-0.5rem', marginBottom: '0.5rem' }} className="d-flex justify-content-between align-items-center">
                         <div className="d-flex">
-                            <div className="color-circle"></div>
-                            <div className="color-circle"></div>
-                            <div className="color-circle"></div>
+                            {
+                                colors.map(color => (
+                                    <div
+                                        key={uuidv4()}
+                                        className="color-circle"
+                                        style={{ backgroundColor: `${color}` }}
+                                    ></div>
+                                ))
+                            }
                         </div>
                         <div className="d-flex align-items-center">
                             {/* Old price field(only for on-sale products) */}
@@ -64,9 +72,11 @@ const ProductCard = ({ product }) => {
                     </div>
 
                     <div className="d-flex justify-content-center">
-                        <Button>
-                            <h5>Add to Cart</h5>
-                        </Button>
+                        <Link to={`/product/${id}`} style={{width: '100%'}}>
+                            <Button>
+                                <h5>Add to Cart</h5>
+                            </Button>
+                        </Link>
                     </div>
                 </Card.Body>
             </Card>

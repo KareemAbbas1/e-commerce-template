@@ -35,11 +35,40 @@
     color: inherit
 }
 
+
+.size-color-container {
+    width: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
 .color {
     width: 25px;
     height: 25px;
     border: 1px solid;
     border-radius: 50%;
+    display: inline-flex;
+    margin-right: 5px;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    
+}
+.not-chosen {
+    visibility: hidden;
+}
+.chosen-color {
+    visibility: visible;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+}
+
+
+.sizes-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
 }
 
 .increment,

@@ -11,7 +11,10 @@ import ProductReviews from './ProductReviews';
 import ResponsiveAccordions from './ResponsiveAccordions';
 import ProductsSlider from '../../ProductsSlider';
 import { Link } from "react-router-dom";
-
+import axios from 'axios';
+import { addProduct } from '../../../redux/cartSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 
 
 const Produt = (props) => {
@@ -26,33 +29,63 @@ const Produt = (props) => {
 
   useEffect(() => {
 
-    const handleOnSale = async () => {
-
-      setTimeout(() => {
-
-        const productsArray = Object.keys(products).map(key => {
-          return products[key];
-        });
-
-        const product = productsArray.find(p => p.id === id);
-        setProduct(product)
-
-      }, 100)
+    const fetchProduct = async () => {
+      try {
+        const res = await axios.get(`${import.meta.env.VITE_APP_API_URL}/api/products/${id}`);
+        setProduct(res.data);
+        // define the default size(the firt one)
+        setSize(res.data.sizes[0]);
+        // define the default color(the firt one)
+        setColor(res.data.colors[0]);
+      } catch (err) {
+        console.log(err)
+      }
     }
-    handleOnSale();
-  }, [id, products])
+    fetchProduct();
+  }, [id]);
 
-  const name = product && product.name;
+
+
+  // console.log(product)
+  const name = product && product.title;
   const rate = product && product.rate;
   const images = product && product.images;
   const reviews = product && product.reviews;
   const brand = product && product.brand;
-  const quantity = product && product.quantity;
+  const countInStock = product && product.countInStock;
   const type = product && product.type;
   const description = product && product.description;
   const price = product && product.price;
-  const color = product && product.color;
-  const productDetails = product && product.productDetails;
+  const colors = product && product.colors;
+  const sizes = product && product.sizes;
+
+
+
+  /* Handle quantity, sizes, and colors */
+  const [quantity, setQuantity] = useState(1);
+  const [size, setSize] = useState('');
+  const [color, setColor] = useState('');
+
+
+
+  // Add and remove products
+  const dispatch = useDispatch();
+
+
+  const handleQuantity = (type) => {
+    if (type === "dec") {
+      quantity > 1 && setQuantity(quantity - 1);
+    } else {
+      quantity <= countInStock - 1 && setQuantity(quantity + 1);
+    }
+  };
+
+  // adding products
+  const handleAddProducts = () => {
+    dispatch(
+      addProduct({ ...product, quantity, color, size })
+    );
+  };
 
   // Handle Simillar Products
   useEffect(() => {
@@ -60,12 +93,12 @@ const Produt = (props) => {
 
       setTimeout(() => {
 
-        const productsArray = Object.keys(products).map(key => {
-          return products[key];
-        });
+        // const productsArray = Object.keys(products).map(key => {
+        //   return products[key];
+        // });
 
         // eslint-disable-next-line array-callback-return
-        const simillarProductsArray = productsArray && productsArray.filter(p => {
+        const simillarProductsArray = products && products.filter(p => {
           if (p.id !== id) {
             return p.type === type;
           }
@@ -91,32 +124,68 @@ const Produt = (props) => {
             <p style={{ color: "rgb(68, 66, 66)" }}> {reviews && reviews.length} reviews</p>
           </div> <br />
 
-          <p>Brand: <span>{brand}</span></p>
-          <p>Availability: <span>{quantity} in stock</span></p>
-          <p>Product Type: <span>{type}</span></p>
+          <p>Brand: <br /><span><strong>{brand}</strong></span></p>
+          {/* <p>Availability: <span>{countInStock} in stock</span></p> */}
+          <p>Type: <br /><span><strong>{type}</strong></span></p>
           <br />
           <p className='mt-4'>{description}</p>
           <p className='mt-4'><strong>${price}</strong></p>
-          <p className='mt-4'> Color: <span>{color}</span></p>
-          <div className='color mt-4' style={{ background: `${color}` }}></div>
+
+          <div className='size-color-container'>
+            <div>
+              <p className='mt-4 mb-0'> Color: </p>
+              <span>{color}</span>
+              <br />
+
+              {
+                colors && colors.map(c => (
+                  <div
+                    key={uuidv4()}
+                    className='color mt-3'
+                    style={{ background: `${c}` }}
+                    onClick={() => setColor(c)}
+                  >
+                    <span
+                      className={`${color === c ? 'chosen-color' : 'not-chosen'}`}
+                      style={{ color: color === 'White' && 'black' }}
+                    >
+                      &#10003;
+                    </span>
+                  </div>
+                ))
+              }
+            </div>
+
+            <div className='sizes-container'>
+              <p className='mt-4 mb-0'>Size:</p>
+              <select className='mt-4 mb-0' onChange={(e) => setSize(e.target.value)}>
+                {
+                  sizes && sizes.map(s => (
+                    <option key={uuidv4()} value={s}>{s}</option>
+                  ))
+                }
+              </select>
+            </div>
+          </div>
+
           <div className='buttons-container'>
             <div className='d-flex justify-content-between mt-5'>
               <span style={{ width: '48%' }} className='d-flex justify-content-between align-items-center me-2'>
-                <Button variant='outline-dark' className='decrement'>
+                <Button variant='outline-dark' className='decrement' onClick={() => handleQuantity("dec")}>
                   <span className='d-flex justify-content-between align-items-center'>
                     <BsDash size={25} />
                   </span>
                 </Button>
-                <div className='mx-1 quantity'>1</div>
-                <Button variant='outline-dark' className='increment'>
+                <div className='mx-1 quantity'>{quantity}</div>
+                <Button variant='outline-dark' className='increment' onClick={() => handleQuantity("inc")}>
                   <span className='d-flex justify-content-between align-items-center'>
                     <BsPlus size={25} />
                   </span>
                 </Button>
               </span>
 
-              <Button className='add-to-cart' variant='dark'>
-                <Link
+              <Button className='add-to-cart' variant='dark' onClick={handleAddProducts}>
+                {/* <Link
                   to="/cart"
                   style={{
                     color: "#fff",
@@ -124,9 +193,9 @@ const Produt = (props) => {
                     display: "inline-block",
                     width: "100%"
                   }}
-                >
-                  Add To Cart
-                </Link>
+                > */}
+                Add To Cart
+                {/* </Link> */}
               </Button><br />
             </div>
             <Button
@@ -172,7 +241,7 @@ const Produt = (props) => {
           {/* Product Details */}
           <div className='tabs-content'>
             <div className={toggleActiveTab === 1 ? 'tab-content active-tab-content w-lg-75' : 'tab-content'}>
-              <p>{productDetails}</p>
+              {/* <p>{productDetails}</p> */}
             </div>
 
             {/* Customers Reviews */}
@@ -193,28 +262,29 @@ const Produt = (props) => {
 
             {/* Shipping & Returns */}
             <div className={toggleActiveTab === 3 ? 'tab-content active-tab-content w-lg-75' : 'tab-content'}>
+              <h6>RETURNS POLICY</h6>
               <p>
-                <h6>RETURNS POLICY</h6>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut blandit risus. Donec mollis nec tellus et rutrum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut consequat quam a purus faucibus scelerisque. Mauris ac dui ante. Pellentesque congue porttitor tempus. Donec sodales dapibus urna sed dictum. Duis congue posuere libero, a aliquam est porta quis.
 
                 Donec ullamcorper magna enim, vitae fermentum turpis elementum quis. Interdum et malesuada fames ac ante ipsum primis in faucibus.
 
                 Curabitur vel sem mi. Proin in lobortis ipsum. Aliquam rutrum tempor ex ac rutrum. Maecenas nunc nulla, placerat at eleifend in, viverra etos sem. Nam sagittis lacus metus, dignissim blandit magna euismod eget. Suspendisse a nisl lacus. Phasellus eget augue tincidunt, sollicitudin lectus sed, convallis desto. Pellentesque vitae dui lacinia, venenatis erat sit amet, fringilla felis. Nullam maximus nisi nec mi facilisis.
-                <br /><br />
+              </p>
+              <br /><br />
 
-                <h6>SHIPPING</h6>
+              <h6>SHIPPING</h6>
+              <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut blandit risus. Donec mollis nec tellus et rutrum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut consequat quam a purus faucibus scelerisque. Mauris ac dui ante. Pellentesque congue porttitor tempus. Donec sodales dapibus urna sed dictum. Duis congue posuere libero, a aliquam est porta quis.
 
                 Donec ullamcorper magna enim, vitae fermentum turpis elementum quis. Interdum et malesuada fames ac ante ipsum primis in faucibus.
 
                 Curabitur vel sem mi. Proin in lobortis ipsum. Aliquam rutrum tempor ex ac rutrum. Maecenas nunc nulla, placerat at eleifend in, viverra etos sem. Nam sagittis lacus metus, dignissim blandit magna euismod eget. Suspendisse a nisl lacus. Phasellus eget augue tincidunt, sollicitudin lectus sed, convallis desto. Pellentesque vitae dui lacinia, venenatis erat sit amet, fringilla felis. Nullam maximus nisi nec mi facilisis.
-
               </p>
             </div>
           </div>
         </div>
         <div className='responsive-accordions'>
-          <ResponsiveAccordions productDetails={productDetails} rate={rate} reviews={reviews} />
+          {/* <ResponsiveAccordions productDetails={productDetails} rate={rate} reviews={reviews} /> */}
         </div>
       </Row>
 

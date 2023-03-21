@@ -215,6 +215,129 @@ img {
   background: #c2c2c2;
 }
 
+.search-resutls {
+  position: absolute;
+  top: 3.5rem;
+  width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 3rem;
+  background-color: #fff;
+  list-style: none;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 1rem;
+  border-top: 1px solid #ccc;
+}
+
+.search-resutls > li {
+  border: 1px solid #ccc;
+  flex: 0 35%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: fit-content;
+  cursor: pointer;
+  max-width: 100%;
+}
+
+
+
+.search-resutls > li p {
+  font-weight: bold;
+  margin-right: 1rem;
+}
+
+.search-resutls > li .details-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  gap: 1rem;
+}
+.search-resutls > li .details-container .line-break {
+  width: 39%;
+}
+
+.search-resutls > li div {
+  display: inline-block;
+}
+
+.search-resutls > li .product-thumpnail {
+  width: 6rem;
+  height: 7rem;
+  border: 2px solid #ccc;
+  background-size: cover;
+  background-position: center;
+}
+
+.search-resutls > li .more-details {
+  display: none;
+  position: absolute;
+  width: 200px;
+  background-color: #000;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  transition: all 300ms ease;
+}
+
+.search-resutls > li.show-more {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 10px;
+  border: none;
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.search-resutls > li a {
+  color: #000;
+}
+
+.search-resutls > li.show-more:hover {
+  opacity: 0.7;
+}
+
+@media(max-width: 450px) {
+  .search-resutls > li {
+    flex: 0 100%;
+  }
+  .more-details {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+
+@media(min-width: 451px) and (max-width: 992px) {
+  .search-resutls > li {
+    flex: 0 45%;
+  }
+  .more-details {
+    margin-left: 10%;
+  }
+}
+
+
+@media (min-width: 1680px) {
+  .search-resutls {
+    padding-inline: 15%;
+  }
+
+  .more-details {
+    margin-left: 8%;
+  }
+}
+
+@media (min-width: 1366px) and (max-width: 1679px) {
+  .more-details {
+    margin-left: 12%;
+  }
+}
+
 
 .offcanvas {
   transition-timing-function: ease-in;

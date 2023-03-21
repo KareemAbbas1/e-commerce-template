@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { CaretLeft, CaretRight } from "react-bootstrap-icons";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 
 const slidesData = [
@@ -189,11 +190,13 @@ const Slider = () => {
                             <InfoContainer>
                                 <Title>{item.title}</Title>
                                 <Description>{item.description}</Description>
-                                <Button>
-                                    <HoverEffect>
-                                        <ButtonText>Shop Now</ButtonText>
-                                    </HoverEffect>
-                                </Button>
+                                <Link to="/products">
+                                    <Button>
+                                        <HoverEffect>
+                                            <ButtonText>Shop Now</ButtonText>
+                                        </HoverEffect>
+                                    </Button>
+                                </Link>
                             </InfoContainer>
                         </Overlay>
                     </Slide>

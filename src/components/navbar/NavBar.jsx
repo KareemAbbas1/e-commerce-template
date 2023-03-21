@@ -1,13 +1,14 @@
 import './navbar.css';
 import { Container, Nav, Navbar, Offcanvas, Button, Image } from 'react-bootstrap';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/Logo.png';
 import whiteLogo from "../../assets/LogoWhite.png";
 import { useState, useEffect } from 'react';
 import { Search, Cart3, Person, X } from 'react-bootstrap-icons';
 import _debounce from 'lodash.debounce';
 import styled from 'styled-components';
-
+import { useSelector } from 'react-redux';
+import axios from 'axios';
 
 
 const CartBadge = styled.span`
@@ -24,7 +25,20 @@ const CartBadge = styled.span`
     top: -0.2rem;
 `
 
+const CustomLI = styled.li`
+    transition: all 300ms ease;
+
+    &:hover {
+        opacity: 0.7;
+        div.more-details {
+            display: block;
+        }
+    }
+`
 const NavBar = () => {
+
+    // Cart State
+    const quantity = useSelector(state => state.cart.quantity);
 
     // Handle Rerender at screen width change: Check this answer for elaboration (https://stackoverflow.com/questions/19014250/rerender-view-on-browser-resize-with-react#:~:text=As%20of%20React,Flag)
     const [width, setWidth] = useState(window.innerWidth);
@@ -73,8 +87,10 @@ const NavBar = () => {
             document.getElementById("searchBar-container").style.display = 'block'
             setShowSearchbar(true)
         } else {
-            document.getElementById("searchBar-container").style.display = 'none'
-            setShowSearchbar(false)
+            document.getElementById("searchBar-container").style.display = 'none';
+            document.getElementById('search-form').reset();
+            setSearchResults([]);
+            setShowSearchbar(false);
         }
     }
 
@@ -93,6 +109,33 @@ const NavBar = () => {
     const [showLogin, setShowLogin] = useState(false);
     const handleShowLogin = () => setShowLogin(true);
     const handleCloseLogin = () => setShowLogin(false);
+
+    // handle search
+    const [searchQuery, setSearchQuery] = useState("");
+    const [searchResults, setSearchResults] = useState([]);
+    const [showMoreResults, setShowMoreResults] = useState(false);
+    const navigate = useNavigate();
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        navigate(`/products/products-search?query=${searchQuery}`);
+        toggleSearchbar();
+    };
+
+
+    useEffect(() => {
+        const handleSearchResults = async () => {
+            try {
+                const res = await axios.get(`${import.meta.env.VITE_APP_API_URL}/api/products-search?query=${searchQuery}`);
+                const resToShow = res.data.length > 5 ? res.data.slice(0, 6) : res.data;
+                setSearchResults(resToShow);
+                res.data.length > 5 ? setShowMoreResults(true) : setShowMoreResults(false);
+            } catch (err) {
+                setSearchResults(err.response.data.message);
+            }
+        };
+        searchQuery.length > 0 && handleSearchResults();
+    }, [searchQuery]);
 
 
     return (
@@ -147,7 +190,7 @@ const NavBar = () => {
                                 </Link>
 
                                 <Link
-                                    to="/products"
+                                    to="/products/women"
                                     className={navLinkStyle()}
                                     onClick={handleCloseOffcanvas}
                                 >
@@ -155,7 +198,7 @@ const NavBar = () => {
                                 </Link>
 
                                 <Link
-                                    to="/products"
+                                    to="/products/men"
                                     onClick={handleCloseOffcanvas}
                                 >
                                     <span className={navLinkStyle()}>
@@ -164,7 +207,7 @@ const NavBar = () => {
                                 </Link>
 
                                 <Link
-                                    to="/products"
+                                    to="/products/kids"
                                     onClick={handleCloseOffcanvas}
                                 >
                                     <span className={navLinkStyle()}>
@@ -215,22 +258,65 @@ const NavBar = () => {
                             <CartBadge
                                 color={showNavBackground || width <= 990 || location.pathname !== '/' ? '#fff' : '#000'}
                                 bg={showNavBackground || width <= 990 || location.pathname !== '/' ? '#000' : '#fff'}
-                            >1</CartBadge>
+                            >{quantity}</CartBadge>
                         </button>
                     </Link>
                     <div id='searchBar-container'>
-                        <form className='d-flex'>
+                        <form id='search-form' className='d-flex' onSubmit={(e) => handleSearch(e)}>
                             <input
                                 type='search'
                                 placeholder='Search Products'
                                 className='search-bar-show'
+                                onChange={(e) => setSearchQuery(e.target.value)}
                             />
-                            <Button className='searchBar-buttons'>
+                            <Button className='searchBar-buttons' type="submit">
                                 <Search color='#6e6e6e' size={20} />
                             </Button>
                             <Button className='searchBar-buttons' onClick={() => toggleSearchbar()}>
                                 <X color='#6e6e6e' size={35} />
                             </Button>
+                            {
+                                searchResults.length > 0 && (
+                                    <ul className='search-resutls'>
+                                        {
+                                            searchResults.map(product => (
+                                                <CustomLI key={`${product._id}search-result`}>
+                                                    <div className='details-container'>
+                                                        <div className='product-thumpnail' style={{ backgroundImage: `url('${product.images[0]}')` }} />
+                                                        <div>
+                                                            <div className='lead'>{product.title}</div>
+                                                            <div className='line-break' />
+                                                            <div style={{ float: 'left' }}>
+                                                                {
+                                                                    product.colors.map(color => (
+                                                                        <div
+                                                                            className='color'
+                                                                            key={`${color}search-result`}
+                                                                            style={{ backgroundColor: `${color}` }}
+                                                                        />
+                                                                    ))
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <p>${product.price}</p>
+                                                    <div className='more-details'>
+                                                        more details
+                                                    </div>
+                                                </CustomLI>
+                                            ))
+                                        }
+                                        {
+                                            showMoreResults &&
+                                            <li className="show-more" onClick={toggleSearchbar}>
+                                                <Link to={`/products/products-search?query=${searchQuery}`}>
+                                                    Show more results
+                                                </Link>
+                                            </li>
+                                        }
+                                    </ul>
+                                )
+                            }
                         </form>
                     </div>
                 </div>
@@ -243,13 +329,13 @@ const NavBar = () => {
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <form>
-                        <input placeholder='Enter your email'/>
-                        <input placeholder='Enter your password'/>
+                        <input placeholder='Enter your email' />
+                        <input placeholder='Enter your password' />
                         <div>
                             <a href=''>don't have an account? Sign up</a>
                             <a href=''>forgot password</a>
                         </div>
-                        <button onClick={(e) => {e.preventDefault()}}>Log in</button>
+                        <button onClick={(e) => { e.preventDefault() }}>Log in</button>
                     </form>
                 </Offcanvas.Body>
             </Offcanvas>

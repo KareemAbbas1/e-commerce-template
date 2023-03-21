@@ -882,7 +882,7 @@ export const brands = {
             "https://cdn.shopify.com/s/files/1/0788/5983/products/Untitleddesign-2021-11-17T115025.283_1024x1024.png?v=1637142640",
             "https://media.wired.com/photos/607f24fc4bf3b54775c6c4b4/master/pass/Gear-Apple_iPad-Pro_Magic-Keyboard.jpg"
         ]
-    },     
+    },
     Samsung: {
         name: "Samsung",
         images: [
@@ -892,7 +892,7 @@ export const brands = {
             "https://cdn.arstechnica.net/wp-content/uploads/2021/10/51.jpg",
             "https://cdn.arstechnica.net/wp-content/uploads/2021/10/52.jpg",
         ]
-    },     
+    },
     Huawei: {
         name: "Huawei",
         images: [
@@ -902,7 +902,7 @@ export const brands = {
             "https://consumer-img.huawei.com/content/dam/huawei-cbg-site/common/mkt/plp/phones/new-phones/series-products/p40-pro-plus-white.png",
             "https://consumer-img.huawei.com/content/dam/huawei-cbg-site/en/mkt/v4/about-us/milestones/banner05_new.png",
         ]
-    },     
+    },
     Dell: {
         name: "Dell",
         images: [
@@ -912,7 +912,7 @@ export const brands = {
             "https://cairosales.com/65003-thickbox_default/dell-notebook-latitude-14-intel-core-i7-1165g7-16-gb-ram-512-gb-silver-e7420-i7.jpg",
             "https://i.dell.com/sites/csimages/Banner_Imagery/all/fp_topbanner_lati_1209.png",
         ]
-    },     
+    },
     HP: {
         name: "HP",
         images: [
@@ -922,6 +922,27 @@ export const brands = {
             "https://www.smartech.com.cy/wp-content/uploads/2021/06/hp-14-dq0002dx-1.jpg",
             "https://www.91-cdn.com/hub/wp-content/uploads/2022/01/hp-aero-13.jpg?tr=q-100",
         ]
-    },     
+    },
 }
 
+
+export const categories = [
+    {
+        id: 'fasdf2',
+        img: "https://images.pexels.com/photos/949670/pexels-photo-949670.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        name: "Women",
+        cat: "women"
+    },
+    {
+        id: 'fasdf5',
+        img: "https://images.pexels.com/photos/11688446/pexels-photo-11688446.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        name: "Men",
+        cat: "men"
+    },
+    {
+        id: 'fasdf63',
+        img: "https://images.pexels.com/photos/2853909/pexels-photo-2853909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        name: "Kids",
+        cat: "kids"
+    }
+];

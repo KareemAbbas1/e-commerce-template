@@ -9,13 +9,12 @@ const Featured = ({products}) => {
     // handle products
     const [featuredProducts, setFeaturedProducts] = useState();
 
-    useEffect(() => {
-        const allProdcuts = products && Object.keys(products).map(key => {
-            return products[key];
-        });
-        setFeaturedProducts(allProdcuts);
-    }, [products]);
-
+    // useEffect(() => {
+    //     const allProdcuts = products && Object.keys(products).map(key => {
+    //         return products[key];
+    //     });
+    //     setFeaturedProducts(allProdcuts);
+    // }, [products]);
 
 
     // Handle Rerender at screen width change: Check this answer for elaboration (https://stackoverflow.com/questions/19014250/rerender-view-on-browser-resize-with-react#:~:text=As%20of%20React,Flag)
@@ -37,7 +36,7 @@ const Featured = ({products}) => {
             <div className="featured">
                 <div className="featured-products-grid">
                     <div className="featured-product-card one">
-                        <Link to={`/products/${featuredProducts && featuredProducts[0].id}`}>
+                        <Link to={`/product/${products && products[0]._id}`}>
                             <img src='https://images.pexels.com/photos/949670/pexels-photo-949670.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='product' className="image" />
                             <div className="middle">
                                 <div className="text">Products Name</div>
@@ -45,7 +44,7 @@ const Featured = ({products}) => {
                         </Link>
                     </div>
                     <div className="featured-product-card two">
-                        <Link to={`/products/${featuredProducts && featuredProducts[1].id}`}>
+                        <Link to={`/product/${products && products[1]._id}`}>
                             <img src='https://images.pexels.com/photos/11688446/pexels-photo-11688446.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='product' className="image" />
                             <div className="middle">
                                 <div className="text">Products Name</div>
@@ -53,7 +52,7 @@ const Featured = ({products}) => {
                         </Link>
                     </div>
                     <div className="featured-product-card three">
-                        <Link to={`/products/${featuredProducts && featuredProducts[2].id}`}>
+                        <Link to={`/product/${products && products[2]._id}`}>
                             <img src='https://images.pexels.com/photos/2853909/pexels-photo-2853909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='product' className="image" />
                             <div className="middle">
                                 <div className="text">Products Name</div>

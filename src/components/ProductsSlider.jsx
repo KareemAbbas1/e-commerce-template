@@ -4,6 +4,7 @@ import { CaretLeft, CaretRight } from "react-bootstrap-icons";
 import { Carousel } from "react-bootstrap";
 import _debounce from 'lodash.debounce';
 import ProductCard from "./product card/ProductCard";
+import { v4 as uuidv4 } from 'uuid';
 
 
 // Styles
@@ -133,7 +134,7 @@ const ProductsSlider = ({ products }) => {
                 <Wrapper className="slider" slideIndex={slideIndex}>
                     <Slide className="slide-card">
                         {slideProducts && slideProducts.map(p => (
-                            <div key={p.id} >
+                            <div key={uuidv4()} >
                                 <ProductCard product={p} />
                             </div>
                         ))};
@@ -146,7 +147,7 @@ const ProductsSlider = ({ products }) => {
             <Carousel variant="dark" className="products-carousel" interval={null}>
                 {
                     slideProducts && slideProducts.map(p => (
-                        <Carousel.Item key={p.id} className='products-carousel-item'>
+                        <Carousel.Item key={uuidv4()} className='products-carousel-item'>
                             <ProductCard product={p}/>
                         </Carousel.Item>
                     ))

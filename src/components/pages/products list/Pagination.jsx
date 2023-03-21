@@ -1,5 +1,6 @@
 import { Pagination } from "react-bootstrap";
 import { useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 
 
 const Paginationn = ({ productsPerPage, totalProducts, paginate }) => {
@@ -35,7 +36,7 @@ const Paginationn = ({ productsPerPage, totalProducts, paginate }) => {
 
                 {pageNumbers.map(pageNumber => (
 
-                    <span onClick={() => window.scrollTo(0, 0)}>
+                    <span key={uuidv4()} onClick={() => window.scrollTo(0, 0)}>
                         <li
                             style={{ color: '#000' }}
                             key={pageNumber}

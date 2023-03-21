@@ -1,18 +1,12 @@
 import "./home.css";
 import { Container, Button, Carousel } from "react-bootstrap";
-import ShippingBadge from "../../../assets/shipping.png";
-import GuaranteedBadge from "../../../assets/guaranteed.png";
-import WarrantyBadge from "../../../assets/warranty.png";
-import NewArrivals from "./NewArrivals"
-import OnSale from "./OnSale";
-import Brands from "./Brands";
 import Testimonials from "./Testimonials";
 import { Link } from "react-router-dom";
 import Slider from "./Slider";
 import Featured from "./Featured";
 import ProductsSlider from "../../ProductsSlider";
 import styled from "styled-components";
-
+import { categories } from "../../../_Data";
 
 
 const CategoryCard = styled.div`
@@ -72,86 +66,43 @@ const Home = ({ products }) => {
       {/* Categories */}
       <h3 style={{ textAlign: 'center', fontWeight: '700', marginBottom: '1rem' }}>#Categories</h3>
       <div className="categories">
-        <div className="featured-product-card">
-          <Link to={`/products`} style={{ textDecoration: 'none' }}>
-            <CategoryCard bg="https://images.pexels.com/photos/949670/pexels-photo-949670.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
-              <Overlay>
-                <CategoryTitle>#Category Name</CategoryTitle>
-              </Overlay>
-            </CategoryCard>
-          </Link>
-        </div>
-        <div className="featured-product-card">
-          <Link to={`/products`} style={{ textDecoration: 'none' }}>
-            <CategoryCard bg="https://images.pexels.com/photos/11688446/pexels-photo-11688446.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
-              <Overlay>
-                <CategoryTitle>#Category Name</CategoryTitle>
-              </Overlay>
-            </CategoryCard>
-          </Link>
-        </div>
-        <div className="featured-product-card">
-          <Link to={`/products`} style={{ textDecoration: 'none' }}>
-            <CategoryCard bg="https://images.pexels.com/photos/2853909/pexels-photo-2853909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
-              <Overlay>
-                <CategoryTitle>#Category Name</CategoryTitle>
-              </Overlay>
-            </CategoryCard>
-          </Link>
-        </div>
-        {/* <div className="featured-product-card">
-          <Link to={`/products`}>
-            <img src='https://images.pexels.com/photos/11688446/pexels-photo-11688446.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='product' className="image" />
-            <div className="middle">
-              <div className="text">Category Name</div>
+        {
+          categories && categories.map(category => (
+            <div key={category.id} className="featured-product-card">
+              <Link to={`/products/${category.cat}`} style={{ textDecoration: 'none' }}>
+                <CategoryCard bg={category.img}>
+                  <Overlay>
+                    <CategoryTitle>{category.name}</CategoryTitle>
+                  </Overlay>
+                </CategoryCard>
+              </Link>
             </div>
-          </Link>
-        </div>
-        <div className="featured-product-card">
-          <Link to={`/products`}>
-            <img src='https://images.pexels.com/photos/2853909/pexels-photo-2853909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='product' className="image" />
-            <div className="middle">
-              <div className="text">Category Name</div>
-            </div>
-          </Link>
-        </div> */}
+
+          ))
+        }
       </div>
 
       {/* Testimonials */}
       <Testimonials />
-      {/* <section className="badges-section">
-        <Container className="d-flex h-100 align-items-center justify-content-between">
-          <span style={{ flexDirection: 'column' }} className="badge-card d-flex align-items-center">
-            <img src={ShippingBadge} alt='shipping badge' className="badges" />
-            <div className="ms-3">Fast Shipping & Returns </div>
-          </span>
-
-          <span className="vertical-line"></span>
-
-          <span style={{ flexDirection: 'column' }} className="badge-card d-flex align-items-center">
-            <img src={GuaranteedBadge} alt='shipping badge' className="badges" />
-            <span className="ms-3">Lowest Price Guarantee</span>
-
-          </span>
-
-          <span className="vertical-line"></span>
-
-          <span style={{ flexDirection: 'column' }} className="badge-card d-flex align-items-center">
-            <img src={WarrantyBadge} alt='shipping badge' className="badges" />
-            <span className="ms-3">Longest Warranties Offer</span>
-
-          </span>
-        </Container>
-      </section> */}
 
     </div>
   )
 }
 
-export default Home
+export default Home;
 
 
-{/* <div>
+
+// import ShippingBadge from "../../../assets/shipping.png";
+// import GuaranteedBadge from "../../../assets/guaranteed.png";
+// import WarrantyBadge from "../../../assets/warranty.png";
+// import NewArrivals from "./NewArrivals"
+// import OnSale from "./OnSale";
+// import Brands from "./Brands";
+
+{
+  /*
+   <div>
       <section className='banner d-flex align-items-center'>
         <Container>
           <h1>Leveraging tech to drive <br></br>a better IT experience.</h1>
@@ -198,4 +149,58 @@ export default Home
       <Brands />
 
       <Testimonials />
-    </div> */}
+    </div> 
+    */
+}
+
+
+{
+  /*
+    <section className="badges-section">
+        <Container className="d-flex h-100 align-items-center justify-content-between">
+          <span style={{ flexDirection: 'column' }} className="badge-card d-flex align-items-center">
+            <img src={ShippingBadge} alt='shipping badge' className="badges" />
+            <div className="ms-3">Fast Shipping & Returns </div>
+          </span>
+
+          <span className="vertical-line"></span>
+
+          <span style={{ flexDirection: 'column' }} className="badge-card d-flex align-items-center">
+            <img src={GuaranteedBadge} alt='shipping badge' className="badges" />
+            <span className="ms-3">Lowest Price Guarantee</span>
+
+          </span>
+
+          <span className="vertical-line"></span>
+
+          <span style={{ flexDirection: 'column' }} className="badge-card d-flex align-items-center">
+            <img src={WarrantyBadge} alt='shipping badge' className="badges" />
+            <span className="ms-3">Longest Warranties Offer</span>
+
+          </span>
+        </Container>
+    </section> 
+  */
+}
+
+
+{
+  /* 
+    <div className="featured-product-card">
+          <Link to={`/products`}>
+            <img src='https://images.pexels.com/photos/11688446/pexels-photo-11688446.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='product' className="image" />
+            <div className="middle">
+              <div className="text">Category Name</div>
+            </div>
+          </Link>
+        </div>
+        <div className="featured-product-card">
+          <Link to={`/products`}>
+            <img src='https://images.pexels.com/photos/2853909/pexels-photo-2853909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='product' className="image" />
+            <div className="middle">
+              <div className="text">Category Name</div>
+            </div>
+          </Link>
+    </div> 
+  */
+}

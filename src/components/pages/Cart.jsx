@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { BsPlus, BsDash } from "react-icons/bs";
 import { XCircle } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
+import { addProduct, removeProduct, clearProduct } from "../../redux/cartSlice";
+import { useSelector, useDispatch } from "react-redux";
 
 
 
@@ -98,6 +100,10 @@ const ProductImage = styled.div`
   width: 6rem;
   height: 7rem;
   border: 1px solid;
+  background-image: ${props => `url('${props.bg}')`};
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   @media(max-width: 768px) {
     width: 5rem;
     height: 6rem;
@@ -136,10 +142,11 @@ const ProductDetails = styled.div`
 
 const ColorContainer = styled.span`
   display: inline-flex;
-  width: 3rem;
+  min-width: 3rem;
   justify-content: space-between;
   align-items: center;
-`
+  gap: 3px;
+  `
 
 const Color = styled.span`
   display: inline-block;
@@ -147,6 +154,7 @@ const Color = styled.span`
   height: 1rem;
   background-color: ${props => `${props.bg}`};
   border-radius: 50%;
+  border: ${props => props.bg === "White" && '1px solid #000'};
   @media(max-width: 768px) {
     width: 0.8rem;
     height: 0.8rem;
@@ -296,6 +304,34 @@ const ContinueShopping = styled.button`
 
 const Cart = () => {
 
+  // select cart slice
+  const cart = useSelector(state => state.cart);
+  const dispatch = useDispatch();
+  // console.log(cart.products)
+
+
+  // add & remove products
+  // add
+  const handleAddProduct = (product, quantity) => {
+    dispatch(
+      addProduct({ ...product, quantity })
+    );
+  };
+
+  // remove
+  const handleRemoveProduct = (product, quantity) => {
+    dispatch(
+      removeProduct({ ...product, quantity })
+    );
+  };
+
+  // clear product
+  const handleClear = (product, quantity) => {
+    dispatch(
+      clearProduct({ ...product, })
+    )
+  }
+
   // Enable Checkout
   const handleCheckout = () => {
     let checker = document.getElementById('checkme');
@@ -311,76 +347,58 @@ const Cart = () => {
       <Items>
         <CartTitle>
           <h3>Shopping Cart</h3>
-          <h6>2 Items</h6>
+          <h6>{cart.quantity}</h6>
         </CartTitle>
 
 
-        <Row>
-          <Product>
-            <ProductImage />
-            <ProductDescription>
-              <ProductName>Zara Jacket</ProductName>
-              <ProductDetails>
-                <ColorContainer>Black <Color bg='black' /></ColorContainer> / XL
-              </ProductDetails>
-            </ProductDescription>
-          </Product>
+        {
+          cart.quantity > 0 ? cart.products.map(product => (
+            <Row>
+              <Product>
+                <ProductImage bg={product.images[0]} />
+                <ProductDescription>
+                  <ProductName>{product.title}</ProductName>
+                  <ProductDetails>
+                    <ColorContainer>{product.color} <Color bg={product.color} /></ColorContainer> / XL
+                  </ProductDetails>
+                </ProductDescription>
+              </Product>
 
-          <DataContainer>
-            <div style={{ fontSize: '0.8rem', marginBottom: '3px' }}>Quantity</div>
-            <ProductQuantity>
-              <Counter><BsDash size={20} /></Counter>
-              <Quantity>1</Quantity>
-              <Counter><BsPlus size={20} /></Counter>
-            </ProductQuantity>
-          </DataContainer>
+              <DataContainer>
+                <div style={{ fontSize: '0.8rem', marginBottom: '3px' }}>Quantity</div>
+                <ProductQuantity>
+                  <Counter onClick={() => handleRemoveProduct(product, product.quantity)}><BsDash size={20} /></Counter>
+                  <Quantity>{product.quantity}</Quantity>
+                  <Counter onClick={() => handleAddProduct(product, product.quantity)}><BsPlus size={20} /></Counter>
+                </ProductQuantity>
+              </DataContainer>
 
-          <DataContainer>
-            <div style={{ fontSize: '0.8rem' }}>Total</div>
-            <ProductPrice>
-              $20.00
-            </ProductPrice>
-          </DataContainer>
+              <DataContainer>
+                <div style={{ fontSize: '0.8rem' }}>Total</div>
+                <ProductPrice>
+                  ${product.quantity * product.price}
+                </ProductPrice>
+              </DataContainer>
 
-          <DataContainer>
-            <div style={{ fontSize: '0.8rem' }}>Remove</div>
-            <DeleteProduct><XCircle size={25} /></DeleteProduct>
-          </DataContainer>
-        </Row>
-
-        <Row>
-          <Product>
-            <ProductImage />
-            <ProductDescription>
-              <ProductName>H&M Jeans</ProductName>
-              <ProductDetails>
-                <ColorContainer>Blue <Color bg='blue' /></ColorContainer> / M
-              </ProductDetails>
-            </ProductDescription>
-          </Product>
-
-          <DataContainer>
-            <div style={{ fontSize: '0.8rem', marginBottom: '3px' }}>Quantity</div>
-            <ProductQuantity>
-              <Counter><BsDash size={20} /></Counter>
-              <Quantity>1</Quantity>
-              <Counter><BsPlus size={20} /></Counter>
-            </ProductQuantity>
-          </DataContainer>
-
-          <DataContainer>
-            <div style={{ fontSize: '0.8rem' }}>Total</div>
-            <ProductPrice>
-              $18.00
-            </ProductPrice>
-          </DataContainer>
-
-          <DataContainer>
-            <div style={{ fontSize: '0.8rem' }}>Remove</div>
-            <DeleteProduct><XCircle size={25} /></DeleteProduct>
-          </DataContainer>
-        </Row>
-
+              <DataContainer>
+                <div style={{ fontSize: '0.8rem' }}>Remove</div>
+                <DeleteProduct onClick={() => handleClear(product, cart.quantity)}><XCircle size={25} /></DeleteProduct>
+              </DataContainer>
+            </Row>
+          ))
+            :
+            <div style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'flex-start',
+              padding: '4rem ',
+              fontSize: '1.2rem',
+              gap: '5px'
+            }}>
+              <p>You're Cart is empty.</p>
+              <Link style={{ color: '#000', fontWeight: 'bold' }} to='/products'>Back to shop</Link>
+            </div>
+        }
       </Items>
 
       <Summary>
@@ -389,38 +407,43 @@ const Cart = () => {
         </CartTitle>
 
         <SummaryRow>
-          <h6>2 Items</h6>
-          <h6>$38.00</h6>
+          <h6>{cart.quantity} Items</h6>
+          <h6>${cart.total}</h6>
         </SummaryRow>
 
-        <SummaryRow>
-          <h6>Shipping</h6>
-          <h6>$05.00</h6>
-        </SummaryRow>
+        {
+          cart.quantity > 0 &&
+          <>
+            <SummaryRow>
+              <h6>Shipping</h6>
+              <h6>$05.00</h6>
+            </SummaryRow>
 
-        <label for='coupon'><h6 style={{ marginTop: '1rem', marginBottom: '0' }}>Have a Coupon?</h6></label>
-        <SummaryRow>
-          <form style={{ width: '100%' }}>
-            <Coupon type='text' placeholder='Enter Coupon Code' id='coupon' />
-            <ApplyCoupon type="submit">Apply</ApplyCoupon>
-          </form>
-        </SummaryRow>
+            <label for='coupon'><h6 style={{ marginTop: '1rem', marginBottom: '0' }}>Have a Coupon?</h6></label>
+            <SummaryRow>
+              <form style={{ width: '100%' }}>
+                <Coupon type='text' placeholder='Enter Coupon Code' id='coupon' />
+                <ApplyCoupon type="submit">Apply</ApplyCoupon>
+              </form>
+            </SummaryRow>
 
-        <SummaryRow>
-          <h4>Total</h4>
-          <h4>$43.00</h4>
-        </SummaryRow>
+            <SummaryRow>
+              <h4>Total</h4>
+              <h4>${cart.total + 5}</h4>
+            </SummaryRow>
 
-        <input type="checkbox" id='checkme' onChange={handleCheckout} style={{ margin: '1rem 0' }} />
-        <TermsConditions>
-          I agree with the <Link to="/terms-and-conditions" style={{ color: '#000' }}>Terms & Conditions</Link>
-        </TermsConditions>
+            <input type="checkbox" id='checkme' onChange={handleCheckout} style={{ margin: '1rem 0' }} />
+            <TermsConditions>
+              I agree with the <Link to="/terms-and-conditions" style={{ color: '#000' }}>Terms & Conditions</Link>
+            </TermsConditions>
 
-        <Link to="/shipping-address">
-          <Checkout type="submit" name="checkout" id="checkout" value="Checkout" disabled={true}>Checkout</Checkout>
-        </Link>
+            <Link to="/shipping-address">
+              <Checkout type="submit" name="checkout" id="checkout" value="Checkout" disabled={true}>Checkout</Checkout>
+            </Link>
 
-        <ContinueShopping>Continue Shopping</ContinueShopping>
+            <ContinueShopping>Continue Shopping</ContinueShopping>
+          </>
+        }
       </Summary>
     </Container>
   )

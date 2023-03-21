@@ -40,7 +40,7 @@
 
 
 .arrow-right {
-    background: url(../../../../public/assets/rightArrow.png);
+    background: url(../../../../assets/rightArrow.png);
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
@@ -50,7 +50,7 @@
 }
 
 .arrow-left {
-    background: url(../../../../public/assets/leftArrow.png);
+    background: url(../../../../assets/leftArrow.png);
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
